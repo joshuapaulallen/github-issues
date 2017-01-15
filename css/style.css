@@ -1,0 +1,27 @@
+#count {
+    display: none;
+}
+
+table.results {
+    table-layout: fixed;
+}
+
+table.results tr {
+    font-size: 0.8em;
+}
+
+table.results .title {
+    width: 20%;
+}
+
+table.results .body {
+    width: 50%;
+}
+
+table.results .user {
+    width: 15%;
+}
+
+table.results .assignee {
+    width: 15%;
+}

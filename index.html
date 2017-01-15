@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Github Issues Search</title>
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <!-- CSS Reset -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Milligram CSS -->
+    <link rel="stylesheet" href="css/milligram/milligram.css">
+    <!-- CSS for the app itself -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- jquery -->
+    <script type="application/javascript" src="js/jquery-3.1.1.js"></script>
+    <!-- knockout.js -->
+    <script type="application/javascript" src="js/knockout-3.4.1.js"></script>
+    <script type="application/javascript" src="js/issues-app.js"></script>
+    <script type="application/javascript">
+        $(document).ready(IssuesApp.init);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Github Issues Search</h1>
+
+        <div class="row">
+            <div class="column column-20">
+                <div class="search">
+                    <h4>Search</h4>
+                    <fieldset>
+                        <label for="repository">Repository</label>
+                        <input type="text" id="repository" data-bind="value: repository"/>
+                        <label for="owner">Owner</label>
+                        <input type="text" id="owner" data-bind="value: owner" />
+                        <label for="days">Last X Days</label>
+                        <input type="text" id="days" data-bind="value: days"/>
+                    </fieldset>
+                    <button class="button" data-bind="click: fetchIssues">Search</button>
+                </div>
+            </div>
+            <div class="column column-80">
+                <div class="results">
+                    <h4>Results</h4>
+                    <p id="count">Found <strong data-bind="text: issues().length">0</strong> issue(s).</p>
+                    <table class="results">
+                        <thead>
+                        <tr>
+                            <th class="title">Title</th>
+                            <th class="body">Body</th>
+                            <th class="user">User</th>
+                            <th class="assignee">Assignee</th>
+                        </tr>
+                        </thead>
+                        <tbody data-bind="foreach: issues">
+                        <tr>
+                            <td class="title" data-bind="text: title">title</td>
+                            <td class="body" data-bind="text: body">body</td>
+                            <td class="user" data-bind="text: userLogin">user</td>
+                            <td class="assignee" data-bind="text: assigneeLogin">assignee</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
